@@ -1,3 +1,23 @@
+'''
+8
+...**..*
+......*.
+....*...
+........
+........
+.....*..
+...**.*.
+.....*..
+xxxx....
+xxxx....
+xxxx....
+xxxxx...
+xxxxx...
+xxxxx...
+xxx.....
+xxxxx...
+'''
+
 N = int(input())
 
 # 지뢰의 위치
@@ -10,7 +30,7 @@ opened = [list(input()) for _ in range(N)]
 res = [list('.' * N) for _ in range(N)]
 
 mine_cnt = 0
-dir = {-1, 0, 1}
+dir = [-1, 0, 1]
 flag = False    # 지뢰를 밟았는지
 
 for i in range(N):
@@ -37,12 +57,14 @@ for i in range(N):
                     # 지뢰의 개수를 표시
                     res[i][j] = str(mine_cnt)
 
+# 지뢰를 밟았으면, 지도에 모든 지뢰를 표시
 if flag:
     for i in range(N):
         for j in range(N):
             if mine[i][j] == '*':
                 res[i][j] = '*'
 
+# 지도 출력
 for i in range(N):
     for j in range(N):
         print(res[i][j], end='')
