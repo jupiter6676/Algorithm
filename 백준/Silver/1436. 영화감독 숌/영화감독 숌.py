@@ -1,17 +1,14 @@
 N = int(input())
 
-res = 0
+num = 0
 cnt = 0
 
+# N번째 숫자를 찾을 때까지
 while cnt != N:
-    res += 1
+    # 숫자를 1씩 계속 증가
+    num += 1
 
-    tmp = res
-    while tmp != 0:
-        if tmp % 1000 == 666:
-            cnt += 1
-            break
-        else:
-            tmp //= 10
+    if '666' in str(num):
+        cnt += 1
 
-print(res)
+print(num)
