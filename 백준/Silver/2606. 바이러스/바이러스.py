@@ -1,6 +1,3 @@
-from collections import deque
-
-
 V = int(input())    # 컴퓨터(정점)의 수
 E = int(input())    # 간선의 수
 
@@ -8,32 +5,31 @@ E = int(input())    # 간선의 수
 graph = [[] for _ in range(V + 1)]
 visited = [False] * (V + 1)
 
-queue = deque()
+stack = list()
 
-def bfs(root):
-    queue.append(root)
+
+def dfs(root):
+    # 1번 정점을 스택에 추가, 방문 체크
+    stack.append(root)
     visited[root] = True
+    
+    top = stack[-1]
 
-    while queue:
-        pop = queue.popleft()
+    # 제거한 정점과 연결된 노드 탐색
+    for adj in graph[top]:
+        # 해당 노드를 방문하지 않았으면
+        if not visited[adj]:
+            dfs(adj)
 
-        for adj in graph[pop]:
-            if not visited[adj]:
-                queue.append(adj)
-                visited[adj] = True
+    return stack.pop()
 
-    cnt = 0
-    for i in range(2, V + 1):
-        if visited[i]:
-            cnt += 1
-
-    return cnt
 
 if __name__ == '__main__':
     # 인접 리스트 요소 입력
     for _ in range(E):
         v1, v2 = map(int, input().split())
         graph[v1].append(v2)
-        graph[v2].append(v1)
+        graph[v2].append(v1)    # 방향으로 하면 틀리네..
 
-    print(bfs(1))
+    dfs(1)
+    print(sum(visited) - 1)
