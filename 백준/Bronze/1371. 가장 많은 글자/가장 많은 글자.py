@@ -1,16 +1,22 @@
-import sys
-input = sys.stdin.read
+alpha = dict()
 
-s = input().replace("\n","").replace(" ","")
-c = [0] * 26
-for i in s:
-    c[ord(i)-97]+=1
-    
-maxx = max(c)
-r = []
-for i in range(len(c)):
-    if c[i] == maxx:
-        r.append(chr(i+97))
-        
-r.sort()
-print(*r,sep="")
+while True:
+    try:
+        string = input()
+
+        for ch in string:
+            if 97 <= ord(ch) <= 122:
+                alpha[ch] = alpha.get(ch, 0) + 1
+
+    except:
+        break
+
+alpha = sorted(alpha.items(), key=lambda x: (-x[1], x[0]))
+
+max_value = alpha[0][1]
+
+for k, v in alpha:
+    if v == max_value:
+        print(k, end='')
+    else:
+        break
