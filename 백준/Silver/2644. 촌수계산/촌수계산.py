@@ -10,12 +10,7 @@ dist = [0] * (V + 1)
 
 ''' dfs 함수 '''
 def dfs(start, end):
-    global dist
-
     visited[start] = 1
-
-    if start == end:
-        return dist
 
     for adj in graph[start]:
         if not visited[adj]:
