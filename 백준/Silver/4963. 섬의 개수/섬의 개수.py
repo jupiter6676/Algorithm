@@ -1,28 +1,32 @@
+# 121_4963_(1).py는 22.08.10
+
 import sys
 input = sys.stdin.readline
 
-sys.setrecursionlimit(100000)
 
 # 좌상, 상, 우상, 우, 우하, 하, 좌하, 좌
 dy = [-1, -1, -1, 0, 1, 1, 1, 0]
 dx = [-1, 0, 1, 1, 1, 0, -1, -1]
 
-def dfs(y, x, cnt):
+stack = list()
+
+def dfs(y, x):
+    stack.append((y, x))
     visited[y][x] = True
-    graph[y][x] = cnt
 
-    for d in range(8):
-        ny = y + dy[d]
-        nx = x + dx[d]
+    while stack:
+        pop = stack.pop()
 
-        if not (-1 < ny < h and -1 < nx < w):
-            continue
+        for d in range(8):
+            ny = pop[0] + dy[d]
+            nx = pop[1] + dx[d]
 
-        if graph[ny][nx] == 1 and not visited[ny][nx]:
-            graph[ny][nx] = cnt
-            visited[ny][nx] = True
+            if not (-1 < ny < h and -1 < nx < w):
+                continue
 
-            dfs(ny, nx, cnt)
+            if graph[ny][nx] == 1 and not visited[ny][nx]:
+                stack.append((ny, nx))
+                visited[ny][nx] = True
 
 
 while True:
@@ -39,6 +43,6 @@ while True:
         for j in range(w):
             if graph[i][j] == 1 and not visited[i][j]:
                 island_cnt += 1
-                dfs(i, j, island_cnt)
+                dfs(i, j)
 
     print(island_cnt)
