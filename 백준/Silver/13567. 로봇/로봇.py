@@ -1,11 +1,9 @@
 M, n = map(int, input().split())
-graph = [[0] * (M + 1) for _ in range(M + 1)]
 
 ROBOT = 1
 
 # 로봇의 초기 좌표
 y, x = 0, 0
-graph[y][x] = ROBOT
 
 right_cnt = 1   # 우회전 횟수
 flag = True
@@ -37,11 +35,7 @@ for _ in range(n):
 
         if not (0 <= nx <= M and 0 <= ny <= M):
             flag = False
-            print(-1)
             break
-        
-        graph[y][x] = 0
-        graph[ny][nx] = ROBOT
 
         x = nx
         y = ny
@@ -53,7 +47,6 @@ for _ in range(n):
             right_cnt += 1
 
 if flag:
-    for y in range(M + 1):
-        for x in range(M + 1):
-            if graph[y][x]:
-                print(x, y)
+    print(x, y)
+else:
+    print(-1)
