@@ -1,30 +1,27 @@
+total = 0
 lst = list()
 
-total = 0
-for i in range(9):
-    lst.append(int(input()))
-    total += lst[i]
+for _ in range(9):
+    n = int(input())
 
-N = len(lst)
-flag = False
-
-# 총 9 난쟁이에, 진짜 난쟁이는 7명이니까
-# 9명의 키를 다 더한 다음 2명의 키를 빼서 100이 되는지 확인
-for i in range(N - 1):
-    if flag:    break
-
-    for j in range(i + 1, N):
-        tmp = lst[i] + lst[j]
-        
-        if total - tmp == 100:
-            lst[i] = -1
-            lst[j] = -1
-            
-            flag = True
-            break
+    total += n
+    lst.append(n)
 
 lst.sort()
 
-for num in lst:
-    if num != -1:
-        print(num)
+i = 0
+flag = False
+
+while True:
+    for j in range(i + 1, 9):
+        if total - lst[i] - lst[j] == 100:
+            flag = True
+            break
+
+    if flag:    break
+
+    i += 1
+
+for k in range(9):
+    if not (k == i or k == j):
+        print(lst[k])
