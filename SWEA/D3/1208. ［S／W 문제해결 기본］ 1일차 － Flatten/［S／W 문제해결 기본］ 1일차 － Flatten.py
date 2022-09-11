@@ -1,15 +1,13 @@
-for tc in range(1, 11):
+for t in range(1, 11):
     dump = int(input())
-    num_list = list(map(int, input().split()))
+    lst = list(map(int, input().split()))
 
-    num_list.sort()
+    lst.sort()
 
     for _ in range(dump):
-        num_list[99] -= 1
-        num_list[0] += 1
+        lst[-1] -= 1
+        lst[0] += 1
 
-        num_list.sort()
+        lst.sort()
 
-    res = num_list[99] - num_list[0]
-
-    print(f'#{tc} {res}')
+    print(f'#{t} {lst[-1] - lst[0]}')
