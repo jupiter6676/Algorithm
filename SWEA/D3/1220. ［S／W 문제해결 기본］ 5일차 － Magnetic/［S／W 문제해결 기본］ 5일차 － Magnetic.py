@@ -3,8 +3,8 @@ for t in range(1, 11):
     graph = [list(map(int, input().split())) for _ in range(K)]
 
     # N극이 위에 있으니까
-    # 빨간 자성체를 검사해서, 파란 자성체를 만나면 교착상태 +1
-    # 근데 빨간 자성체를 만나거나 0을 만나면 그대로 떨어짐
+    # 빨간 자성체가 있으면, 아래로 내려간다. 파란 자성체를 만나면 교착상태 +1
+    # 빨간 자성체를 만나거나 빈공간이 계속되면, 그대로 떨어짐
 
     N = 1   # N극(빨간) 자성체
     S = 2   # S극(파란) 자성체
@@ -13,14 +13,14 @@ for t in range(1, 11):
 
     # 열부터 탐색
     for j in range(K):
-        tmp_cnt = 0
+        is_red = False
 
         for i in range(K):
-            if graph[i][j] == N and tmp_cnt == 0:
-                tmp_cnt = 1
+            if graph[i][j] == N and not is_red:
+                is_red = True
             
-            if tmp_cnt == 1 and graph[i][j] == S:
-                total += tmp_cnt
-                tmp_cnt = 0
+            if is_red and graph[i][j] == S:
+                total += 1
+                is_red = False
 
     print(f'#{t} {total}')
