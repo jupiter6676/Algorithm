@@ -1,6 +1,4 @@
 def solution(y, x):
-    visited[y][x] = 1
-
     col = 0
     while True:
         if not (x + col < N):
