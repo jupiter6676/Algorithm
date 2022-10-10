@@ -29,6 +29,7 @@ for _ in range(1, 11):
                 if str_ == str_[::-1]:
                     # print(str_)
                     max_len = max(max_len, N)
+                    break
 
     rotated_graph = rotate(graph)
     for N in range(100, 0, -1):
@@ -43,5 +44,6 @@ for _ in range(1, 11):
                 if str_ == str_[::-1]:
                     # print(str_)
                     max_len = max(max_len, N)
+                    break
 
     print(f'#{t} {max_len}')
