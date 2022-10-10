@@ -1,15 +1,3 @@
-# 시계방향으로 90도 회전
-def rotate(matrix):
-    rotated = [[0] * 100 for _ in range(100)]
-
-    for i in range(100):
-        for j in range(100):
-            rotated[i][j] = matrix[100 - j - 1][i]
-
-    return rotated
-
-
-'''main'''
 for _ in range(1, 11):
     t = int(input())
 
@@ -58,7 +46,8 @@ for _ in range(1, 11):
 
             for j in range(100 - (N - 1)):
                 # 회문의 길이(N)만큼 회문 만들기
-                # 반복문은 너무 느리기 때문에 아예 행렬을 회전
+                # 반복문은 너무 느리기 때문에 아예 행렬을 회전 (그냥 행과 열을 바꿔도 될 듯)
+                # join도 너무 느리다.. 그냥 하면 될 걸
                 str_ = row[j : j + N]
 
                 if str_ == str_[::-1]:
