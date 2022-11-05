@@ -10,4 +10,3 @@
 
 > 출처: SW Expert Academy, https://swexpertacademy.com/main/code/problem/problemList.do
 
-[D3] Title: 재미있는 오셀로 게임, Time: 205 ms, Memory: 64,988 KB -BaekjoonHub
