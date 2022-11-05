@@ -17,6 +17,9 @@ for t in range(1, T + 1):
         if sec > 0 and sec % M == 0:
             bread += K
 
+        if is_possible == False:
+            break
+
         # 손님이 도착했을 때
         if ch[sec]:
             # 붕어빵이 없으면 Impossible
