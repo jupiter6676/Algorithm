@@ -1,23 +1,18 @@
-def solution():
+def solution(start):
     if len(seq) == M:
         print(*seq)
         return
 
-    for i in range(1, N + 1):
+    for i in range(start, N + 1):
         if not i in seq:
-            if not seq:
-                seq.append(i)
-                solution()
-                seq.pop()
-
-            elif i > max(seq):
-                seq.append(i)
-                solution()
-                seq.pop()
+            seq.append(i)
+            solution(i + 1)
+            seq.pop()
+                
 
 
 '''main'''
 N, M = map(int, input().split())
 seq = list()
 
-solution()
+solution(1)
