@@ -30,7 +30,7 @@ def dfs(y, x):
 
 
 R, C = map(int, input().split())
-graph = [list(input().rstrip()) for _ in range(R)]
+graph = [list(input()) for _ in range(R)]
 visited = [[0] * C for _ in range(R)]
 
 cnt = 0
