@@ -2,7 +2,11 @@ import sys
 input = sys.stdin.readline
 
 def dfs(y, x):
-    global is_arrived
+    global cnt
+
+    if x == C - 1:
+        cnt += 1
+        return True
 
     # 우상, 우, 우하
     dy = [-1, 0, 1]
@@ -11,9 +15,6 @@ def dfs(y, x):
     visited[y][x] = 1
 
     for d in range(3):
-        if is_arrived:
-            return
-
         ny = y + dy[d]
         nx = x + dx[d]
 
@@ -22,25 +23,19 @@ def dfs(y, x):
 
         if not visited[ny][nx] and graph[ny][nx] == '.':
             graph[ny][nx] = 'p'
+            if dfs(ny, nx):
+                return True
 
-            if nx == C - 1:
-                is_arrived = True
-
-            dfs(ny, nx)
+    return False
 
 
 R, C = map(int, input().split())
-graph = [list(input().strip()) for _ in range(R)]
+graph = [list(input().rstrip()) for _ in range(R)]
 visited = [[0] * C for _ in range(R)]
-
-for i in range(R):
-    if not visited[i][0] and graph[i][0] == '.':
-        is_arrived = False
-        dfs(i, 0)
 
 cnt = 0
 for i in range(R):
-    if graph[i][C - 1] == 'p':
-        cnt += 1
+    if not visited[i][0] and graph[i][0] == '.':
+        dfs(i, 0)
 
 print(cnt)
