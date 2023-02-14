@@ -9,9 +9,8 @@ for i in range(N):
 
     for j in range(i):
         if seq[j] < seq[i]:
-            if dp[j][-1] < seq[i]:
-                if len(dp[i]) < len(dp[j] + [seq[i]]):
-                    dp[i] = dp[j] + [seq[i]]
+            if len(dp[i]) < len(dp[j] + [seq[i]]):
+                dp[i] = dp[j] + [seq[i]]
 
 dp.sort(key=lambda x: -len(x))
 print(len(dp[0]))
