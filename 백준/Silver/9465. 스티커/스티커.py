@@ -12,8 +12,8 @@ for _ in range(T):
     dp[1][1] = stickers[1][1]
     
     for i in range(2, N + 1):
-        # 한 칸 대각선 vs 두 칸 대각선 → N + 2
-        # (3칸 대각선은 1칸 대각선으로 2번 이동한 것과 같음)
+        # 한 칸 대각선 vs 두 칸 대각선
+        # (3칸 대각선은 1칸 대각선으로 3번 이동한 것과 같음)
         dp[0][i] = max(dp[1][i - 2], dp[1][i - 1]) + stickers[0][i]
         dp[1][i] = max(dp[0][i - 2], dp[0][i - 1]) + stickers[1][i]
 
