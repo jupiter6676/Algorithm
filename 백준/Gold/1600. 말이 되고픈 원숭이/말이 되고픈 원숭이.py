@@ -30,10 +30,7 @@ def bfs():
                 continue
 
             if not graph[ny][nx]:
-                if visited[k][ny][nx]:
-                    if visited[k][ny][nx] < visited[k][y][x] + 1:
-                        continue
-                else:
+                if not visited[k][ny][nx]:
                     visited[k][ny][nx] = visited[k][y][x] + 1
                     q.append([k, ny, nx])
 
@@ -46,10 +43,7 @@ def bfs():
                     continue
 
                 if not graph[ny][nx]:
-                    if visited[k - 1][ny][nx]:
-                        if visited[k - 1][ny][nx] < visited[k][y][x] + 1:
-                            continue
-                    else:
+                    if not visited[k - 1][ny][nx]:
                         visited[k - 1][ny][nx] = visited[k][y][x] + 1
                         q.append([k - 1, ny, nx])
 
