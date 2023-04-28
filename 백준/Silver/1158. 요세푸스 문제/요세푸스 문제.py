@@ -1,28 +1,20 @@
 import sys
+from collections import deque
 input = sys.stdin.readline
 
 N, K = map(int, input().split())
-nums = [i for i in range(N + 1)]
-visited = [0] * (N + 1)
+q = deque()
 seq = list()
 
-cnt = 0
-i = 0
-flag = 0
-while True:
-    if flag == N:
-        break
+for i in range(1, N + 1):
+    q.append(i)
 
-    if not visited[i]:
-        if cnt > 0 and cnt % K == 0:
-            seq.append(nums[i])
-            visited[i] = 1
-            flag += 1
+while q:
+    for i in range(K - 1):
+        pop = q.popleft()
+        q.append(pop)
 
-        cnt += 1
-
-    i %= N
-    i += 1
+    seq.append(q.popleft())
 
 print('<', end='')
 print(*seq, sep=', ', end='')
