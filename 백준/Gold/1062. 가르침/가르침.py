@@ -42,7 +42,7 @@ def dfs(start, depth):
 
 '''main'''
 N, K = map(int, input().split())
-words = [input().rstrip() for _ in range(N)]
+words = [input().rstrip()[4 : -4] for _ in range(N)]
 
 if K < 5:   # 최소 a, c, i, n, t는 알아야 읽는다.
     print(0)
