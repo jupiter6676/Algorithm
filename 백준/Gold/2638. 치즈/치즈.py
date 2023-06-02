@@ -2,13 +2,6 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-def pprint(mat):
-    print('==========')
-    for row in mat:
-        for elem in row:
-            print(elem, end=' ')
-        print()
-
 def bfs():
     dy = [-1, 1, 0, 0]
     dx = [0, 0, -1, 1]
@@ -59,6 +52,4 @@ while True:
 
     bfs()
     melt()
-    # pprint(visited)
-    # pprint(graph)
     res += 1
